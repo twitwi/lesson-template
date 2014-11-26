@@ -1,0 +1,3 @@
+[submodule "deck.js-extended"]
+	path = deck.js-extended
+	url = https://github.com/twitwi/deck.js.git
