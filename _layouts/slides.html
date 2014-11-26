@@ -21,6 +21,9 @@ $endfor$
   <script>
       // TODO: finer filter on what is needed (vs profile-5)
       includedeck("profile-5 deck.js-theme-builder/software-carpentry.css", {
+         BEFOREINIT: function() {
+            $$(".slide.auto li:not(li li):not(.notslide)").addClass("slide");
+         },
          PREFIX: "deck.js-extended"
       });
   </script>
