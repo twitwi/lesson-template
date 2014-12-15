@@ -17,14 +17,13 @@ $for(css)$
   <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
 $endfor$
 
-  <script src="deck.js-extended/extensions/includedeck/load.js"></script>
+  <script src="js/deckjs-custom.js"></script>
   <script>
       // TODO: finer filter on what is needed (vs profile-5)
-      includedeck("profile-5 deck.js-theme-builder/software-carpentry.css", {
+      includedeck("css/swc-slides.css", {
          BEFOREINIT: function() {
             $$(".slide.auto li:not(li li):not(.notslide)").addClass("slide");
-         },
-         PREFIX: "deck.js-extended"
+         }
       });
   </script>
 </head>
