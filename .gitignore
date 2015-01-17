@@ -7,3 +7,5 @@ CONTRIBUTING.html
 *.pyc
 _site
 .DS_Store
+README.html
+all-in-one.*
