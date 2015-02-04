@@ -3,4 +3,9 @@ title: Title
 author: Software Carpentry Foundation Community
 language: en
 rights: Software Carpentry Foundation, CC BY
+documentclass: book
+lang: english
+toc: 1
+listings: 1
+geometry: paperwidth=18.91cm,paperheight=24.589cm,vmargin=1.9cm,inner=1.9cm,outer=2.29cm,bindingoffset=0.89cm
 ---
