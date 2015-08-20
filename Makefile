@@ -22,6 +22,7 @@ FILTERS = $(wildcard tools/filters/*.py)
 # Temporary file for all-in-one
 ALL_IN_ONE_MD=all-in-one.md
 ALL_IN_ONE_HTML=all-in-one.html
+ALL_IN_ONE_AS_SLIDES_HTML=all-in-one-as-slides.html
 ALL_IN_ONE_EPUB=all-in-one.epub
 ALL_IN_ONE_LATEX=all-in-one.tex
 ALL_IN_ONE_PDF=all-in-one.pdf
@@ -32,6 +33,12 @@ INCLUDES = \
 	-Vbanner="$$(cat _includes/banner.html)" \
 	-Vfooter="$$(cat _includes/footer.html)" \
 	-Vjavascript="$$(cat _includes/javascript.html)"
+
+AS_SLIDES_INCLUDES = \
+	-Vheader="$$(cat _includes/header.html _includes/as-slides.html)" \
+	-Vbanner="$$(cat _includes/banner.html)" \
+	-Vfooter="$$(cat _includes/footer.html)" \
+	-Vjavascript="<!-- nothing here as jquery should be included once -->"
 
 # Chunk options for knitr (used in R conversion).
 R_CHUNK_OPTS = tools/chunk-options.R
@@ -95,6 +102,15 @@ ${ALL_IN_ONE_HTML}: ${ALL_IN_ONE_MD}
 	    --filter=tools/filters/id4glossary.py \
 	    --filter=tools/filters/epub.py \
 	    $(INCLUDES) \
+	    -o $@ $<
+
+${ALL_IN_ONE_AS_SLIDES_HTML}: ${ALL_IN_ONE_MD}
+	pandoc -s -f markdown -t html \
+	    --template=_layouts/page \
+	    --filter=tools/filters/blockquote2div.py \
+	    --filter=tools/filters/id4glossary.py \
+	    --filter=tools/filters/epub.py \
+	    $(AS_SLIDES_INCLUDES) \
 	    -o $@ $<
 
 ${ALL_IN_ONE_EPUB}: ${ALL_IN_ONE_MD}

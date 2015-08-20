@@ -1,0 +1,50 @@
+
+<!-- make the page as slides -->
+<script src="js/deckjs-custom.js"></script>
+<script>
+$(function() {
+    // set the deck root
+    $('.lesson div.row>div.col-md-10').addClass('deck-container');
+    if ($('.deck-container').size() == 0) {
+        $('.row-fluid>.span10').addClass('deck-container');
+    }
+    // set the slides
+    $('h1, .panel, .figure, p:has(img)').addClass('slide');
+    // TODO TOCHECK TOREMOVE depending on the lesson (or age of the template?) it seems the "panel" class is not there, so we do a little more
+    $('.prereq, .challenge, .callout').addClass('slide'); // HERE
+    
+    //$('.deck-container>*').addClass('slide');
+    // hide some things
+    $('.deck-container>*:not(.slide)').hide();
+    $('.banner, .footer').hide();
+
+includedeck();
+});
+</script>
+<style>
+.deck-container>.slide {
+    overflow-y: auto;
+}
+h1.slide {
+    position: absolute;
+    top: 25%;
+    left: 0; right:0;
+    text-align: center;
+}
+pre, code {
+    font-size: 20px;
+}
+body {
+    background: white !important;
+    font-size: 200%;
+}
+.panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6 {
+    font-size: 32px;
+}
+</style>
+<!-- END: make the page as slides -->
+
+<!-- This one is from _include/javascript.html that we don't include directly
+     as it inconditionnaly includes also a version of jquery (which erases the deck one).
+  -->
+<script src="https://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
